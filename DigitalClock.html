@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #clock{
+            width: 1500px;
+            margin: auto;
+            text-align: center;
+            font-size: 100px;
+     }
+    </style>
+    <script>
+        function displayTime() 
+        {
+            var currentTime = new Date();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var seconds = currentTime.getSeconds();
+            var m = checkTime(minutes);
+            var s = checkTime(seconds);
+            var mer = "AM";
+            if (hours > 12)
+            {
+                hours = hours - 12;
+                mer = "PM"
+            }
+            document.getElementById('clock').innerHTML = hours + ":" + m + ":" + s + " " + mer;
+            var time = setTimeout(displayTime,500);
+        }
+        function checkTime(i)
+        {
+            if (i < 10)
+            {
+                i = "0" + i;
+            }
+            return i;
+        }
+    </script>
+</head>
+<body onload="displayTime()">
+    <div id='clock'></div>
+</body>
+</html>
